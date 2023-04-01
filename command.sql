@@ -1,0 +1,1 @@
+CREATE DATABASE h8_project_book_gorm;
