@@ -3,6 +3,8 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"log"
 	"net/http"
 	"os"
@@ -26,6 +28,7 @@ func main() {
 
 	newRouter := gin.New()
 	routes.BookRouter(newRouter, serv)
+	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.NoRoute(func(ctx *gin.Context) {
 		ctx.AbortWithStatusJSON(http.StatusNotFound, web.BookResponse{Message: "Page not found"})
 	})
