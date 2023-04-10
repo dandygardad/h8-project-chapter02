@@ -29,11 +29,11 @@ var (
 func InitGorm() error {
 	NewGorm = new(GormDb)
 	NewGorm.Gorm = &Gorm{
-		Username: os.Getenv("POSTGRES_USER"),
-		Password: os.Getenv("POSTGRES_PASSWORD"),
-		Host:     os.Getenv("POSTGRES_HOST"),
-		DBName:   os.Getenv("POSTGRES_DB"),
-		Port:     os.Getenv("POSTGRES_PORT"),
+		Username: os.Getenv("PGUSER"),
+		Password: os.Getenv("PGPASSWORD"),
+		Host:     os.Getenv("PGHOST"),
+		DBName:   os.Getenv("PGDATABASE"),
+		Port:     os.Getenv("PGPORT"),
 	}
 
 	err := NewGorm.Gorm.OpenConnection()
